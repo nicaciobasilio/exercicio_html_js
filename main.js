@@ -2,27 +2,25 @@ const form = document.getElementById("form-envio")
 const quantidadeVendida = document.getElementById("quantidade-vendida")
 const restanteEstoque = document.getElementById("restante-estoque")
 
-function validaQuantidade(quantidadeVendida) {
-    const valorEnviado = quantidadeVendida >  restanteEstoque
-    return valorEnviado
-}
-
 form.addEventListener('submit', function(e){
     e.preventDefault();
-    let formEValido = false;
+    
+    const quantidadeVendida = document.getElementById("#quantidade-vendida")
+    const restanteEstoque = document.getElementById("#restante-estoque")
+    const mensagemSucesso = `Foi vendida a quantidade de: <b>${quantidadeVendida}</b> e a quantidade restante no estoque é de: <b>${restanteEstoque}</b>`
+    const mensagemNegativa = `O formulário não pode ser enviado pois a quantidade restante no estoque é de: <b>${restanteEstoque}</b> sendo inferior a quantidade vendida de: <b>${quantidadeVendida}</b>`
+    const msgNegativa = document.querySelector(".nao-enviou")
+    const msgPositiva = document.querySelector(".envio-sucedido")
 
-    const quantidadeVendida = document.getElementById("quantidade-vendida")
-    const restanteEstoque = document.getElementById("restante-estoque")
-    const mensagemSucesso = `Foi vendida a quantidade de: <b>${quantidadeVendida}</b> e o valor restante em estoque é: <b>${restanteEstoque}</b>`
-
-    formEvalido = validaQuantidade(quantidadeVendida)
+    formEValido = restanteEstoque >= quantidadeVendida
     if (formEValido) {
-        const containerMensagemSucesso = document.querySelector(".envio-sucedido")
-        containerMensagemSucesso.innerHTML = mensagemSucesso;
-        containerMensagemSucesso.style.display = 'block';
+        document.querySelector(".envio-sucedido").innerHTML = mensagemSucesso
+        msgPositiva.style.display = "block"
+        msgPositiva.style.display = "none"
     } else {
-        /* quantidadeVendida.style.border = '1px solid red' */
-        document.querySelector(".nao-enviou")
+        document.querySelector(".nao-enviou").innerHTML = mensagemNegativa
+        msgNegativa.style.displau = 'block'
+        msgPositiva.style.display = "none"
     }
 }
 )

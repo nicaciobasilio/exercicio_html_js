@@ -12,11 +12,9 @@
         <h1>Formulário de envio - Estoque</h1>
         <h2>Retirada e saída</h2>
         <form id="form-envio">
-            <input type="number" required placeholder="Quantidade vendida">
-            <p class="nao-enviou">
-                O valor precisa ser menor que o restate em estoque
-            </p>
-            <input type="number" required placeholder="Quantidade restante em estoque">
+            <input type="number" id="quantidade-vendida" required placeholder="Quantidade vendida">
+            <p class="nao-enviou"></p>
+            <input type="number" id="restante-estoque" required placeholder="Quantidade restante em estoque">
             <button type="submit">Registrar</button>
         </form>
         <p class="envio-sucedido"></p>
